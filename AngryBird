@@ -1,0 +1,32 @@
+import turtle #execute turtle graphic model
+import math #execute math module
+
+player=turtle.Turtle() #produce tutrle graphic
+player.shape("turtle") #make shape turtle
+screen=player.getscreen() #on screen
+
+def turnleft(): #left spin function
+    player.left(5)
+
+def turnright(): #right spin function
+    player.right(5)
+
+
+def fire():
+    x=0
+    y=0
+    velocity=50 #make initial velocity 50
+    angle=player.heading() #make graphic's position angle
+    vx=velocity*math.cos(angle*3.14/180.0) #'->radian
+    vy=velocity*math.sin(angle*3.14/180.0) #'->radian
+    while player.ycor()>=0: #while y coordinate == negative
+        vx=vx
+        vy=vy-10
+        x=x+vx
+        y=y+vy
+        player.goto(x,y)
+
+screen.onkeypress(turnleft,"Left") #click left
+screen.onkeypress(turnright,"Right") #click right
+screen.onkeypress(fire,"space") #push spacebar
+screen.listen()
