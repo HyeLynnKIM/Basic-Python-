@@ -1,0 +1,35 @@
+import random
+from tkinter import*
+
+
+def put():
+    global l1
+    guess=int(e1.get())
+    if guess==num:
+        l1['text']="정답입니다"
+    elif guess>num:
+        l1['text']="너무 높아요!"
+    else:
+        l1['text']="너무 낮아요!"
+
+def retry():
+    global num
+    num=random.randint(1,100)
+    print(num)
+    l1['text']="다시 해봅시다"
+
+
+num=random.randint(1,100)
+print(num)
+
+a=Tk()
+
+l1=Label(a,text="?")
+e1=Entry(a)
+b1=Button(a,text="숫자를 입력",command=put)
+b2=Button(a,text="게임을 다시 실행",command=retry)
+
+l1.grid(row=0,column=1)
+e1.grid(row=1,column=1)
+b1.grid(row=2,column=0)
+b2.grid(row=2,column=1)
